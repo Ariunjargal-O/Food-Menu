@@ -22,6 +22,26 @@ const data = [
       },
     ]
   },
+   {
+    categoryName: "BURGERS",
+    foods: [
+      {
+        foodName: "CLASSIC BURGER",
+        price: '18,900₮',
+        ingredites: "Juicy beef patty, cheddar cheese, lettuce, tomato, and house-made sauce, served with fries.",
+      },
+      {
+        foodName: "BBQ BACON BURGER",
+        price: '21,900₮',
+        ingredites: "Beef patty topped with crispy bacon, BBQ sauce, cheddar, and onion rings.",
+      },
+      {
+        foodName: "VEGAN BLACK BEAN BURGER",
+        price: '17,900₮',
+        ingredites: "Homemade black bean patty, avocado, lettuce, tomato, and vegan mayo, served on a whole-grain bun.",
+      },
+    ]
+  },
   {
     categoryName: "PASTA",
     foods: [
@@ -41,25 +61,6 @@ const data = [
         ingredites: "Fettuccine pasta with grilled chicken, basil pesto, and cherry tomatoes.",
       },
 
-    ]
-  }, {
-    categoryName: "BURGERS",
-    foods: [
-      {
-        foodName: "CLASSIC BURGER",
-        price: '18,900₮',
-        ingredites: "Juicy beef patty, cheddar cheese, lettuce, tomato, and house-made sauce, served with fries.",
-      },
-      {
-        foodName: "BBQ BACON BURGER",
-        price: '21,900₮',
-        ingredites: "Beef patty topped with crispy bacon, BBQ sauce, cheddar, and onion rings.",
-      },
-      {
-        foodName: "VEGAN BLACK BEAN BURGER",
-        price: '17,900₮',
-        ingredites: "Homemade black bean patty, avocado, lettuce, tomato, and vegan mayo, served on a whole-grain bun.",
-      },
     ]
   },
   {
@@ -84,36 +85,39 @@ const data = [
   }
 ]
 
-function Menu(props) {
+function Menulist(props) {
   console.log(props)
   return (
-    <div className="menu-box">
-        <h2>hjgfd</h2>
+
+    <div>
+      <div className="menu-box">
+        <h2>{props.data.categoryName}</h2>
       <div className="list">
         <div>
           <div className="list-flex">
-            <h3></h3>
-            <h3>24,900₮</h3>
+            <h3>{props.data.foods[0].foodName}</h3>
+            <h3>{props.data.foods[0].price}</h3>
           </div>
-          <p>Served with Sundried tomatoes, chunky garlic <br /> croutons and grilled Chicken</p>
+          <p>{props.data.foods[0].ingredites}</p>
         </div>
 
         <div>
           <div className="list-flex">
-            <h3>CHICKEN CAESER SALAD</h3>
-            <h3>24,900₮</h3>
+            <h3>{props.data.foods[1].foodName}</h3>
+            <h3>{props.data.foods[1].price}</h3>
           </div>
-          <p>Served with Sundried tomatoes, chunky garlic <br /> croutons and grilled Chicken</p>
+          <p>{props.data.foods[1].ingredites}</p>
         </div>
 
         <div>
           <div className="list-flex">
-            <h3>CHICKEN CAESER SALAD</h3>
-            <h3>24,900₮</h3>
+            <h3>{props.data.foods[2].foodName}</h3>
+            <h3>{props.data.foods[2].price}</h3>
           </div>
-          <p>Served with Sundried tomatoes, chunky garlic <br /> croutons and grilled Chicken</p>
+          <p>{props.data.foods[2].ingredites}</p>
         </div>
       </div>
+    </div>
     </div>
 
   )
@@ -122,16 +126,17 @@ function Menu(props) {
 
 
 export default function Home() {
-  // const menus = [];
+  const menu = [];
 
-  // for (let i = 0; i < data.length; i++) {
-  //   menus.push(<Menu data={data[i]}></Menu>)
-  // }
+  for (let i = 0; i < data.length; i++) {
+    menu.push(<Menulist data={data[i]}></Menulist>)
+  }
   return (
     <div>
       <h1>pranzo</h1>
-      <Menu></Menu>
-      <Menu></Menu>
+      <div className="container">
+{menu}
+      </div>
     </div>
 
   );
